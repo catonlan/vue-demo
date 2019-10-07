@@ -27,20 +27,93 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+    <!-- 基础练习 -->
+    <div id="vue_det">
+      <h1>site: {{site}}</h1>
+      <h1>url: {{url}}</h1>
+      <h1>{{details()}}</h1>
+    </div>
+    <!-- 渲染HTML结构 -->
+      <div v-html="mssageg"></div>
+      <!-- 点击修改颜色 -->
+      <label for="r1">修改颜色</label><input type="checkbox" v-model="use" id="r1">
+      <br>
+      <div v-bind:class="{'class1': use}">
+        v-bind:class指令
+
+      </div>
+
+      <hr>
+      <!-- 点击反转字符串 -->
+      <p>{{yturn}}</p>
+      <button v-on:click="reversMessage">反转字符串</button>
+      <hr>
+      <!-- 过滤器 -->
+        {{kjs | capitalize}}
+        <hr>
+        <!-- v-if 显示隐藏 -->
+      <p v-if="seen">现在你看到我了</p>
+      <div v-if="ok">
+        <h1>打字辛苦</h1>
+        <h1>离开教室里</h1>
+        <h1>.孟子见梁襄王</h1>
+      </div>
+      <button @click="dianj">点击显示隐藏</button>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data: function() {
+    return {
+      site: '菜鸟教程',
+      url: 'www.runoob.com',
+      alexa: '10000',
+      mssageg: '<h1>home live statry laljh</h1>',
+      use: false,
+      yturn: 'dljlsjldjsjsljhuwwi',
+      kjs: 'ljjialjwiej',
+      seen: true,
+      ok: true
+    };
+  },
+  filters: {
+    capitalize: function(value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+  },
+  methods: {
+    details: function() {
+      return this.site + ' - 学到不仅是技术,更是梦想!';
+    },
+    reversMessage: function() {
+      this.yturn = this.yturn.split('').reverse().join('');
+    },
+    dianj: function() {
+      this.seen = !this.seen;
+    }
   }
 }
+
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
+
+.class1 {
+  background: #444;
+  color: #42b983;
+}
 h3 {
   margin: 40px 0 0;
 }
