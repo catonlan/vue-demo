@@ -59,6 +59,33 @@
         <h1>.孟子见梁襄王</h1>
       </div>
       <button @click="dianj">点击显示隐藏</button>
+      <hr>
+      <!-- v-if v-if-else v-else -->
+
+      <div v-if="Math.random() > 0.5">
+        sorry
+      </div>
+      <div v-else>
+        not sorry
+      </div>
+
+      <div v-if="type === 'A'">
+        A
+      </div>
+      <div v-else-if="type === 'B'">
+        B
+      </div>
+      <div v-else-if="type === 'C'">
+        C
+      </div>
+      <div v-else>
+        not A/B/C
+      </div>
+      <hr>
+      <!-- v-show -->
+
+      <h1 v-show="ok">Hello</h1>
+      <button @click="isShow">点击显示和隐藏</button>
   </div>
 </template>
 
@@ -79,7 +106,8 @@ export default {
       yturn: 'dljlsjldjsjsljhuwwi',
       kjs: 'ljjialjwiej',
       seen: true,
-      ok: true
+      ok: true,
+      type: 'C'
     };
   },
   filters: {
@@ -98,6 +126,10 @@ export default {
     },
     dianj: function() {
       this.seen = !this.seen;
+    },
+
+    isShow() {
+      this.ok = !this.ok;
     }
   }
 }
