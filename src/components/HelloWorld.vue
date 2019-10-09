@@ -86,6 +86,48 @@
 
       <h1 v-show="ok">Hello</h1>
       <button @click="isShow">点击显示和隐藏</button>
+      <hr>
+
+      <!-- v-for -->
+      <div>
+        <ol>
+          <li v-for="(item,value) in sint" :key="value">
+            {{item.name}}
+          </li>
+        </ol>
+      </div>
+
+      <div>
+        <ul>
+          <li v-for="(ittm, index) in sint" :key="index">
+            {{ittm.name}}
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <ul>
+          <li v-for="(ittm,key) in boj" :key="key">
+            {{ittm}}
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <ul>
+          <li v-for="(itmm, key, index) in boj" :key="key">
+          {{index}} . {{key}} : {{itmm}}
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <ul>
+          <li v-for="(n,index) in 10" :key="index">
+            {{n}}
+          </li>
+        </ul>
+      </div>
   </div>
 </template>
 
@@ -107,7 +149,17 @@ export default {
       kjs: 'ljjialjwiej',
       seen: true,
       ok: true,
-      type: 'C'
+      type: 'C',
+      sint: [
+        { name: 'Runoob' },
+        { name: 'Google' },
+        { name: 'Taobao' }
+      ],
+      boj: {
+        name: '菜鸟教程',
+        url: 'http://www.runoob.com',
+        slogan: '学的不仅是技术，更是梦想！'
+      }
     };
   },
   filters: {
